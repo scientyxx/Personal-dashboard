@@ -10,7 +10,7 @@ class Task extends Model
     protected $table = "task";
     protected $primaryKey = "id";
     protected $fillable = [
-        'id', 'task_name', 'difficulty_level', 'due-date'
+        'id', 'task_name', 'difficulty_level', 'due-date', 'category', 'status',
     ];
     use HasFactory;
 }
