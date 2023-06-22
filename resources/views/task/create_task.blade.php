@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- Main content -->
-    <section class="content">
+    <section class="content" >
         <div class="content-header">
             <div class="container-fluid">
               <div class="row mb-2">
@@ -80,4 +80,5 @@
 
 
     </section>
+
 @endsection
