@@ -57,6 +57,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
      <!-- Include DataTables JS -->
      <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
+     {{-- script js edit task --}}
+     <script src="{{ asset('js/edit-task.js') }}"></script>
+
 
 </body>
 </html>

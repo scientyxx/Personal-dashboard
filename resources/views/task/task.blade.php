@@ -89,6 +89,57 @@
                     ]
                 });
             });
+
+            $('.edit-btn').on('click', function() {
+        var taskId = $(this).data('task-id');
+
+        $.ajax({
+            url: '/tasks/edit/' + taskId,
+            type: 'GET',
+            success: function(response) {
+                var task = response.result;
+                $('#task_name').val(task.task_name);
+                $('#difficulty_level').val(task.difficulty_level);
+                $('#due_date').val(task.due_date);
+                $('#category').val(task.category);
+                $('#status').val(task.status);
+                $('#sample_form').attr('action', '/tasks/' + taskId);
+                $('#sample_form').attr('method', 'POST');
+                $('#action').val('Edit');
+                $('#editModal').modal('show');
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+
+            $.ajax({
+            url: "/task/edit/" + id + "/",
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            dataType: "json",
+            success: function(task) {
+                console.log('success: ' + task);
+                $('#name').val(task.result.name);
+                $('#email').val(task.result.email);
+                $('#hidden_id').val(id);
+                $('.modal-title').text('Edit Record');
+                $('#action_button').val('Update');
+                $('#action').val('Edit');
+                $('.editpass').hide();
+                $('#formModal').modal('show');
+            },
+            error: function(task) {
+                var errors = task.responseJSON;
+                console.log(errors);
+            }
+        });
+
+
+
+    var task_id;
         </script>
+
+
     </section>
 @endsection

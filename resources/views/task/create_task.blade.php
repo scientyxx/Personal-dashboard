@@ -66,7 +66,7 @@
                         <select id="status" name="status" class="form-control">
                             <option value="">----</option>
                             <option value="urgent">Urgent</option>
-                            <option value="tidak-urgent">Tidak Urgent</option>
+                            <option value="tidak_urgent">Tidak Urgent</option>
                         </select>
                     </div>
 
