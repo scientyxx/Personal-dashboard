@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -37,4 +39,36 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function showLoginForm()
+{
+    return view('auth.login');
 }
+
+protected function redirectTo()
+{
+    return '/task'; // Ganti dengan URL tujuan setelah login berhasil
+}
+
+public function login(Request $request)
+{
+    $credentials = $request->only('email', 'password');
+
+    if (Auth::attempt($credentials)) {
+        // Login berhasil
+        return redirect()->intended('/tasks');
+    } else {
+        // Login gagal
+        return redirect()->back()->withErrors(['email' => 'Email atau password salah']);
+    }
+}
+
+public function logout(Request $request)
+{
+    Auth::logout();
+    return redirect()->route('login');
+}
+
+
+}
+

@@ -51,9 +51,8 @@
                 <table id="tasks-table" class="table" style="">
                     <thead>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 10px; margin-bottom: 10px; margin-right: 60px;">
-                            <a href="http://personal-dashboard.test/create_task" class="btn btn-success" role="button" data-bs-toggle="button">Add Project</a>
-
-                          </div>
+                            <a href="{{ route('create_task') }}" class="btn btn-success" role="button">Add Project</a>
+                        </div>
 
                         <tr>
                             <th>ID</th>
@@ -64,11 +63,59 @@
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
-
                     </thead>
-
                 </table>
+            </div>
+        </div>
 
+        <!-- Modal -->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true" data-id="">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form id="sample_form" method="POST" style="display: inline-block;">
+                        @csrf
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ModalLabel">Edit Record</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div id="form_result"></div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="task_name">Task Name</label>
+                                    <input type="text" id="task_name" name="task_name" class="form-control" placeholder="Task Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="category">Category</label>
+                                    <select id="category" name="category" class="form-control">
+                                        <option value="">----</option>
+                                        <option value="kuliah">Kuliah</option>
+                                        <option value="kerja">Kerja</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="due_date">Due Date</label>
+                                    <input type="date" id="due_date" name="due_date" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="difficulty_level">Difficulty Level</label>
+                                    <input type="text" id="difficulty_level" name="difficulty_level" class="form-control" placeholder="Difficulty Level">
+                                </div>
+                                <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <select id="status" name="status" class="form-control">
+                                        <option value="">----</option>
+                                        <option value="urgent">Urgent</option>
+                                        <option value="tidak-urgent">Tidak Urgent</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
 
@@ -90,54 +137,58 @@
                 });
             });
 
-            $('.edit-btn').on('click', function() {
-        var taskId = $(this).data('task-id');
 
-        $.ajax({
-            url: '/tasks/edit/' + taskId,
-            type: 'GET',
-            success: function(response) {
-                var task = response.result;
-                $('#task_name').val(task.task_name);
-                $('#difficulty_level').val(task.difficulty_level);
-                $('#due_date').val(task.due_date);
-                $('#category').val(task.category);
-                $('#status').val(task.status);
-                $('#sample_form').attr('action', '/tasks/' + taskId);
-                $('#sample_form').attr('method', 'POST');
-                $('#action').val('Edit');
-                $('#editModal').modal('show');
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
+
+            $('.btn-info').on('click', function() {
+                var taskId = $(this).data('task-id');
+
+                $.ajax({
+                    url: '/tasks/edit/' + taskId,
+                    type: 'GET',
+                    success: function(response) {
+                        var task = response.result;
+
+                        $('#task_name').val(task.task_name);
+                        $('#difficulty_level').val(task.difficulty_level);
+                        $('#due_date').val(task.due_date);
+                        $('#category').val(task.category);
+                        $('#status').val(task.status);
+
+                        $('#sample_form').attr('action', '/tasks/' + taskId);
+                        $('#sample_form').attr('method', 'POST');
+                        $('#action').val('Edit');
+
+                        $('#editModal').modal('show');
+                    },
+                    error: function(error) {
+                        alert(error);
+                    }
+                });
+            });
+
+            $('.btn-primary').on('click', function() {
+    var taskId = $(this).closest('form').data('task-id');
+
+    $.ajax({
+        url: '/tasks/' + taskId,
+        type: 'GET',
+        success: function(response) {
+            var modal = $('#viewModal' + taskId);
+
+            modal.find('#task_name').text(response.task_name);
+            modal.find('#category').text(response.category);
+            modal.find('#due_date').text(response.due_date);
+            // Tambahkan kode untuk menampilkan data lainnya
+
+            modal.modal('show'); // Tampilkan modal
+        },
+        error: function(error) {
+            console.log(error);
+        }
     });
-
-            $.ajax({
-            url: "/task/edit/" + id + "/",
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            dataType: "json",
-            success: function(task) {
-                console.log('success: ' + task);
-                $('#name').val(task.result.name);
-                $('#email').val(task.result.email);
-                $('#hidden_id').val(id);
-                $('.modal-title').text('Edit Record');
-                $('#action_button').val('Update');
-                $('#action').val('Edit');
-                $('.editpass').hide();
-                $('#formModal').modal('show');
-            },
-            error: function(task) {
-                var errors = task.responseJSON;
-                console.log(errors);
-            }
-        });
+});
 
 
-
-    var task_id;
         </script>
 
 
