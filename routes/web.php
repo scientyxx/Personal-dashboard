@@ -1,5 +1,7 @@
 <?php
 
+
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
@@ -20,16 +22,18 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tasks/edit/{id}', [TaskController::class, 'edit'])->name('tasks.edit');
     Route::put('/tasks/{id}', [TaskController::class, 'update'])->name('tasks.update');
     Route::delete('/tasks/{id}', [TaskController::class, 'destroy'])->name('tasks.destroy');
-
-
 });
 
 Route::get('/', function () {
-    // Arahkan ke halaman login jika pengguna belum login
-    if (!Auth::check()) {
-        return redirect()->route('login');
-    }
-
-    // Arahkan ke halaman tugas jika pengguna sudah login
-    return redirect()->route('task.index');
+    return view('landing-page'); // Ganti 'landing-page' dengan nama file blade halaman landing page Anda
 });
+
+// Route::get('/login', function () {
+//     // Arahkan ke halaman login jika pengguna belum login
+//     if (!Auth::check()) {
+//         return redirect()->route('login');
+//     }
+
+//     // Arahkan ke halaman tugas jika pengguna sudah login
+//     return redirect()->route('task.index');
+// });
