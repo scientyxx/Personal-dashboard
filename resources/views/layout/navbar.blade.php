@@ -17,11 +17,16 @@
         </li>
                 </ul>
         </li> --}}
+                @php
+            use Illuminate\Support\Facades\Auth;
 
+            $user = Auth::user();
+            $name = $user->name;
+        @endphp
         <div class="dropdown user user-menu" style="padding-left: 67rem;">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: black;">
                 <i class="fa fa-user"></i>
-                <span>Susi Fitrianya </span>
+                <span>{{ $name  }}</span>
             </a>
             <div class="dropdown-menu dropdown-custom dropdown-menu-right" style="padding: 5px;">
                         <li>
@@ -33,7 +38,7 @@
                             </button>
                         </form>
                         </li>
-                        <li>
+                        {{-- <li>
                         <form action="#" method="POST" style="display: contents;">
                             @csrf
                             <button type="submit" class="btn btn-link" style="color: grey !important;">
@@ -41,7 +46,7 @@
                                 Password
                             </button>
                         </form>
-                        </li>
+                        </li> --}}
                         <li>
                         <form action="{{ route('logout') }}" method="POST" style="display: contents;">
                             @csrf

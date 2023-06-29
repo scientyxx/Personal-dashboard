@@ -6,15 +6,22 @@
     </a>
 
     <!-- Sidebar -->
+    @php
+            use Illuminate\Support\Facades\Auth;
+
+            $user = Auth::user();
+            $name = $user->name;
+        @endphp
     <div class="sidebar">
 
 
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="user-panel mt-3 mb-3 d-flex">
         <div class="image">
           <img src="{{asset('image/profilepic.png')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Sri Alia Rosidah</a>
+          <a href="#" class="d-block">Halo {{ $name }} !</a>
+          <p style="color: white;"> Online</p>
         </div>
         {{-- <div class="info">
           <a href="#" class="d-block">121103011</a>
@@ -38,7 +45,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-               <li class="nav-item ">
+               {{-- <li class="nav-item ">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-chart-pie"></i>
                   <p>
@@ -56,7 +63,7 @@
                     </a>
                   </li>
                 </ul>
-              </li>
+              </li> --}}
 
 
           {{-- <li class="nav-item ">

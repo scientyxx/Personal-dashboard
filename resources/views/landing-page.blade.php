@@ -20,6 +20,20 @@
             height: 150px;
             text-align: middle;
         }
+        /* .header.masthead{
+            background: none!important;
+        } */
+        /* .container-head{
+            content: "";
+            position: absolute;
+            background-color: black;
+            height: 100%;
+            width: 50%;
+            top: 0;
+            left: 0;
+            opacity: 80%;
+} */
+
         </style>
     <body>
         <!-- Navigation-->
@@ -32,9 +46,9 @@
         <!-- Masthead-->
         <header class="masthead">
             <div class="container position-relative">
-                <div class="row justify-content-center">
+                <div class="row  justify-content-center">
                     <div class="col-xl-6">
-                        <div class="text-center text-white">
+                        <div class=" text-center text-white">
                             <!-- Page heading-->
                             <h1 class="mb-5">Here's My Pemograman Web's Project</h1>
                             <!-- Signup form-->
@@ -73,8 +87,8 @@
                                 <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                             </form> --}}
                         </div>
-                    </div>
                 </div>
+            </div>
             </div>
         </header>
         <!-- Icons Grid-->
@@ -114,8 +128,8 @@
                     </div>
                     <div class="col-lg-6 order-lg-1 my-auto showcase-text">
                         <h2>Introduction</h2>
-                        <p class="lead mb-0">Personal Dashboard is a task management tool inspired by the powerful features of Jira, designed to help you stay organized, focused, and in control of your tasks. With a user-friendly
-                            interface and intuitive design, it provides a straightforward solution for managing your projects effectively.</p>
+                        <h4 class="lead mb-0">Personal Dashboard is a task management tool inspired by the powerful features of Jira, designed to help you stay organized, focused, and in control of your tasks. With a user-friendly
+                            interface and intuitive design, it provides a straightforward solution for managing your projects effectively.</h4>
                     </div>
                 </div>
                 <div class="row g-0">
@@ -145,9 +159,9 @@
                     </div>
                     <div class="col-lg-8 order-lg-1 my-auto showcase-text">
                         <div class="testimonial mx-auto mb-5 mb-lg-0 ">
-                            <p>Laravel is a popular PHP-based web application framework widely used by developers. With powerful features like Eloquent ORM,
+                            <h4 class="lead mb-0">Laravel is a popular PHP-based web application framework widely used by developers. With powerful features like Eloquent ORM,
                                 expressive routing system, Blade templating system, and integrated security, Laravel simplifies and accelerates the web application
-                                development process with an elegant and efficient approach.</p>
+                                development process with an elegant and efficient approach.</h4>
                         </div>
                     </div>
                 </div>
