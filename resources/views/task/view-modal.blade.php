@@ -18,10 +18,10 @@
                     Due Date: <span id="due_date">{{ $task->due_date }}</span>
                 </div>
                 <div>
-                    Difficulty Level: <span id="due_date">{{ $task->difficulty_level }}</span>
+                    Difficulty Level: <span id="difficulty_level">{{ $task->difficulty_level }}</span>
                 </div>
                 <div>
-                    Status: <span id="due_date">{{ $task->status }}</span>
+                    Status: <span id="status">{{ $task->status }}</span>
                 </div>
                 <!-- Tambahkan elemen lainnya sesuai kebutuhan -->
             </div>

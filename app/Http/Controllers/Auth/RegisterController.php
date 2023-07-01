@@ -27,7 +27,7 @@ class RegisterController extends Controller
     /**
      * Where to redirect users after registration.
      *
-     * @var string
+     * * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
@@ -69,5 +69,15 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    /**
+     * Get the post register redirect path.
+     *
+     * @return string
+     */
+    public function redirectTo()
+    {
+        return '/login';
     }
 }

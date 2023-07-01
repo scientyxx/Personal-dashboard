@@ -29,15 +29,16 @@
                 <span>{{ $name  }}</span>
             </a>
             <div class="dropdown-menu dropdown-custom dropdown-menu-right" style="padding: 5px;">
-                        <li>
-                        <form action="#" method="POST" style="display: contents;">
-                            @csrf
-                            <button type="submit" class="btn btn-link" style="color: grey !important;">
-                                <i class="fa fa-user fa-fw pull-right"></i>
-                                Profil
-                            </button>
-                        </form>
-                        </li>
+                <li>
+                    <form action="{{ route('profile') }}" method="GET" style="display: inline;">
+                        @csrf
+                        <button type="submit" class="btn btn-link" style="color: grey !important;">
+                            <i class="fa fa-user fa-fw pull-right"></i>
+                            Profil
+                        </button>
+                    </form>
+                </li>
+
                         {{-- <li>
                         <form action="#" method="POST" style="display: contents;">
                             @csrf

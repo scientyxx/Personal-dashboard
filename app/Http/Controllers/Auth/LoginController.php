@@ -69,6 +69,13 @@ public function logout(Request $request)
     return redirect()->route('login');
 }
 
+// public function register (Request $request)
+// {
+//     Auth::Register();
+//     return redirect()->route('login');
+// }
+
 
 }
+
 

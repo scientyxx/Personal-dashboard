@@ -101,6 +101,10 @@ class TaskController extends Controller
         return redirect()->route('task.index')->with('success', 'Data task berhasil dihapus.');
     }
 
+    // public function profil($id)
+    // {
+    //     $
+    // }
 
 
 }
