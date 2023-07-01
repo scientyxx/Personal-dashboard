@@ -21,7 +21,7 @@
 <form action="{{ route('tasks.destroy', ['id' => $task->id]) }}" method="POST" style="display: inline-block;">
     @csrf
     @method('DELETE')
-    <button type="submit" class="btn btn-danger btn-sm">
+    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus task ini?');">
         <i class="fas fa-trash"></i> Delete
     </button>
 </form>
